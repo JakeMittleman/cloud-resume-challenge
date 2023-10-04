@@ -1,0 +1,119 @@
+html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.header-container {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    padding-bottom: 25px;
+
+    #name {
+        font-size: 32px;
+        font-weight: 700;
+        padding-bottom: 5px;
+    }
+}
+
+body {
+    height: 100%;
+    width: auto;
+    padding: 0 100px 0 100px;
+    margin-left: 0;
+    font-family: 'Calibri', sans-serif;
+
+    .section-container {
+        padding: 0 0 20px 0;
+    }
+
+    .section-header {
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .subsection-header {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .name-and-location {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+    }
+
+    .role-and-time {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+    }
+
+    .education-header {
+        display: flex;
+        flex-flow: column;
+        padding: 0 0 10px 0;
+    }
+
+    #educationSection1 {
+        padding: 0 0 20px 0;
+    }
+
+    .languages-container {
+        display: flex;
+        flex-flow: row;
+        
+        .languages-label {
+            padding: 0 10px 0 0;
+        }
+
+        .languages-description {
+            display: flex;
+            flex-flow: column;
+        }
+    }
+
+    #frameworks-tools {
+        padding: 5px 0 5px 0;
+    }
+
+    .visitor-counter-container {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0 20px 0;
+
+        .visitor-counter {
+            display: flex;
+            flex-flow: row;
+            border: 2px solid rgb(55, 12, 77);
+            border-radius: 10px;
+            /* padding: 10px; */
+
+            .visitor-counter-count {
+                background-color: rgb(219, 173, 243);
+                padding: 10px;
+                border-radius: 7px 0 0 7px;
+                color: rgb(33, 5, 46);
+                border-right: 2px solid rgb(55, 12, 77);
+                z-index: -1;
+            }
+
+            .visitor-counter-text {
+                padding: 10px;
+            }
+        }
+        
+    }
+    
+}
+
+hr {
+    padding: 0;
+    margin: 3px 0 10px 0;
+}
+
