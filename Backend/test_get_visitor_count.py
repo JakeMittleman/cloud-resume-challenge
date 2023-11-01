@@ -2,7 +2,8 @@ import unittest
 from moto import mock_dynamodb
 from boto3 import resource
 import os
-from serverless_data_pipeline import get_visitor_count
+from Backend.getVisitorCount import handler
+import json
 
 TABLE_NAME = "visits"
 DB_KEY = "id"
@@ -23,9 +24,10 @@ class TestGetVisitorCount(unittest.TestCase):
         self.table.put_item(Item={DB_KEY: DB_KEY_VALUE, DB_ATTRIBUTE:0})
 
     def tearDown(self) -> None:
-        print(5)
+        self.table.delete()
+        self.dynamodb = None
 
-    def test_table_created(self) -> None:
+    def test_lambda_handler(self) -> None:
         response = self.table.get_item(Key={
             DB_KEY: DB_KEY_VALUE
         })
@@ -33,13 +35,12 @@ class TestGetVisitorCount(unittest.TestCase):
         assert 'Item' in response
         assert response['Item'][DB_ATTRIBUTE] == 0
 
-    def test_lambda_handler(self) -> None:
         request_body = {
             "table_name": TABLE_NAME,
             "db_key": DB_KEY,
             "db_key_value": DB_KEY_VALUE,
             "db_attribute": DB_ATTRIBUTE
         }
-        response = get_visitor_count.handler(request_body)
-        assert response["status_code"] == 200
-        assert response["visit_count"] == 1
+        response = handler(request_body)
+        assert response["statusCode"] == 200
+        assert json.loads(response["body"])["visit_count"] == "1"
