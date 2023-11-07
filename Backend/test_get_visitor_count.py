@@ -44,3 +44,6 @@ class TestGetVisitorCount(unittest.TestCase):
         response = handler(request_body)
         assert response["statusCode"] == 200
         assert json.loads(response["body"])["visit_count"] == "1"
+
+if __name__ == "__main__":
+    unittest.main()
