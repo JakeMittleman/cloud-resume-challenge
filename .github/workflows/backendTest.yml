@@ -23,4 +23,5 @@ jobs:
           python-version: '3.x'
       # You can test your matrix by printing the current Python version
       - name: Display Python version
+        working-directory: ./Backend
         run: python test_get_visitor_count.py
