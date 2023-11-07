@@ -2,10 +2,10 @@ import unittest
 from moto import mock_dynamodb
 from boto3 import resource
 import os
-from Backend.getVisitorCount import handler
+from getVisitorCount import handler
 import json
 
-TABLE_NAME = "visits"
+TABLE_NAME = "s3.jakemittlemanresu.me"
 DB_KEY = "id"
 DB_KEY_VALUE = "1"
 DB_ATTRIBUTE = "visits"
@@ -35,12 +35,9 @@ class TestGetVisitorCount(unittest.TestCase):
         assert 'Item' in response
         assert response['Item'][DB_ATTRIBUTE] == 0
 
-        request_body = {
-            "table_name": TABLE_NAME,
-            "db_key": DB_KEY,
-            "db_key_value": DB_KEY_VALUE,
-            "db_attribute": DB_ATTRIBUTE
-        }
-        response = handler(request_body)
+        response = handler(None, None)
         assert response["statusCode"] == 200
         assert json.loads(response["body"])["visit_count"] == "1"
+
+if __name__ == "__main__":
+    unittest.main()
