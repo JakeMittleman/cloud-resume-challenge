@@ -29,3 +29,21 @@ jobs:
       - name: Python Backend Test
         working-directory: ./Backend
         run: python test_get_visitor_count.py
+  front-end-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup Python
+        # This is the version of the action for setting up Python, not the Python version.
+        uses: actions/setup-python@v4
+        with:
+          # Semantic version range syntax or exact version of a Python version
+          python-version: '3.x'
+      - name: Install dependencies
+        working-directory: ./Backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Python Backend Test
+        working-directory: ./Backend
+        run: python test_api.py
