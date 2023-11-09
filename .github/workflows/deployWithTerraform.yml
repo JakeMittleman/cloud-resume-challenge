@@ -10,10 +10,6 @@ on:
     branches:
       - master
 
-permissions:
-  id-token: write
-  contents: read # This is required for actions/checkout@v2
-
 jobs:
   zip-handler:
     runs-on: ubuntu-latest
@@ -30,6 +26,8 @@ jobs:
         env:
           LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        permissions:
+          contents: write
         run: |
           git config --global user.name "Github Actions"
           git config --global user.email "${{ env.LOGIN_EMAIL }}"
