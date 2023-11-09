@@ -4,11 +4,6 @@ run-name: Tests
 on:
   workflow_dispatch:
   push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
   workflow_run:
     workflows: 
       - Deploy With Terraform
