@@ -29,10 +29,10 @@ jobs:
       - name: Commit New Handler Code
         env:
           LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "Github Actions"
           git config --global user.email "${{ env.LOGIN_EMAIL }}"
-          git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/JakeMittleman/cloud-resume-challenge
 
           git add -A
           git commit -m "Zipping file via github actions"
