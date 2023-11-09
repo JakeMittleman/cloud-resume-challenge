@@ -1,5 +1,5 @@
-name: Backend Test
-run-name: Backend Test
+name: Tests
+run-name: Tests
 
 on:
   workflow_dispatch:
