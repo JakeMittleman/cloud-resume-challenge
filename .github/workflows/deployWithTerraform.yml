@@ -13,6 +13,8 @@ on:
 jobs:
   zip-handler:
     runs-on: ubuntu-latest
+    permissions:
+          contents: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -26,8 +28,6 @@ jobs:
         env:
           LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        permissions:
-          contents: write
         run: |
           git config --global user.name "Github Actions"
           git config --global user.email "${{ env.LOGIN_EMAIL }}"
