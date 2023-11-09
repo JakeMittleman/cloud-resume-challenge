@@ -11,30 +11,30 @@ on:
       - master
 
 jobs:
-  zip-handler:
-    runs-on: ubuntu-latest
-    permissions:
-          contents: write
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
+  # zip-handler:
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #         contents: write
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v4
+  #       with:
+  #         ref: ${{ github.event.pull_request.head.ref }}
 
-      - name: Zip Folder
-        working-directory: ./Backend
-        run: zip ../terraform/getVisitorCount.zip getVisitorCount.py
-      - name: Commit New Handler Code
-        env:
-          LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name "Github Actions"
-          git config --global user.email "${{ env.LOGIN_EMAIL }}"
+  #     - name: Zip Folder
+  #       working-directory: ./Backend
+  #       run: zip ../terraform/getVisitorCount.zip getVisitorCount.py
+  #     - name: Commit New Handler Code
+  #       env:
+  #         LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       run: |
+  #         git config --global user.name "Github Actions"
+  #         git config --global user.email "${{ env.LOGIN_EMAIL }}"
 
-          git add -A
-          git commit -m "Zipping file via github actions"
-          git push
+  #         git add -A
+  #         git commit -m "Zipping file via github actions"
+  #         git push
 
   terraform-apply:
     runs-on: ubuntu-latest
