@@ -9,6 +9,9 @@ on:
     type:
       - complete
 
+permissions:
+  contents: write
+
 jobs:
   backend-test:
     runs-on: ubuntu-latest
