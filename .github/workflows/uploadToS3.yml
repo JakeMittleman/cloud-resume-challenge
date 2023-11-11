@@ -17,6 +17,7 @@ jobs:
       AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+      DISTRIBUTION_ID: ${{ secrets.DISTRIBUTION_ID }}
       region: "us-east-1"
     permissions:
       id-token: write
@@ -36,4 +37,6 @@ jobs:
       - name: Push to S3
         run: |
           aws s3 sync ./Frontend s3://$BUCKET_NAME --delete
+          sleep 5
+          aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
 
