@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows: 
-      - Deploy With Terraform
-    type:
+      - "Deploy With Terraform"
+    types:
       - complete
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: arn:aws:iam::829475484955:role/github-actions
           aws-region: us-east-1
