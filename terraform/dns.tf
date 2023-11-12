@@ -18,7 +18,8 @@ resource "porkbun_dns_record" "redirect" {
     domain = var.base_domain
     name = "s3"
     type = "CNAME"
-    content = aws_s3_bucket_website_configuration.cloud-resume-challenge.website_domain
+    content = aws_cloudfront_distribution.s3_distribution.domain_name
+    depends_on = [ aws_cloudfront_distribution.s3_distribution ]
 }
 
 resource "porkbun_dns_record" "api-dns_validation" {
