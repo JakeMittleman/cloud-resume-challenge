@@ -4,11 +4,8 @@ run-name: Upload to S3
 on:
   workflow_dispatch:
   push:
-  workflow_run:
-    workflows: 
-      - "Deploy With Terraform"
-    types:
-      - complete
+    paths:
+      - 'Backend/*'
 
 jobs:
   upload-to-s3:
